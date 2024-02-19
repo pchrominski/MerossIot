@@ -108,7 +108,7 @@ class Namespace(Enum):
     # Humidifier
     CONTROL_SPRAY = 'Appliance.Control.Spray'
 
-    SYSTEM_DIGEST_HUB = 'Appliance.Digest.Hub'
+    SYSTEM_DIGEST_HUB = 'Appliance.Hub.SubdeviceList'
 
     # Oil diffuser
     DIFFUSER_LIGHT = "Appliance.Control.Diffuser.Light"

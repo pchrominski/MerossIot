@@ -164,6 +164,7 @@ class Mts100v3Valve(GenericSubDevice):
         return locally_handled
 
     async def async_handle_subdevice_notification(self, namespace: Namespace, data: dict) -> bool:
+        _LOGGER.debug("notification: %s : %s", namespace, data)
         locally_handled = False
         if namespace == Namespace.HUB_ONLINE:
             self._online = OnlineStatus(data.get('online', {}).get('status', -1))

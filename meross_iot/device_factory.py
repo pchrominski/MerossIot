@@ -26,6 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 
 _KNOWN_DEV_TYPES_CLASSES = {
     "mts100v3": Mts100v3Valve,
+    "mts150": Mts100v3Valve,
     "ms100": Ms100Sensor
 }
 
@@ -81,6 +82,7 @@ _ABILITY_MATRIX = {
 
 _SUBDEVICE_MAPPING = {
     "mts100v3": Mts100v3Valve,
+    "mts150": Mts100v3Valve,
     "ms100": Ms100Sensor
 }
 
@@ -144,6 +146,7 @@ def _build_cached_type(type_string: str, device_abilities: dict, base_class: typ
     # Messing up with that will cause MRO to not resolve inheritance correctly.
     mixin_classes = list(mixin_classes)
     mixin_classes.append(base_class)
+    _LOGGER.debug("classes: %s", mixin_classes)
     m = type(type_string, tuple(mixin_classes), {"_abilities_spec": device_abilities})
     return m
 
