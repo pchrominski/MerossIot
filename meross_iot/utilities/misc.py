@@ -1,7 +1,13 @@
 from meross_iot import name
-from importlib import metadata
-from importlib.metadata import PackageNotFoundError
+#from importlib import metadata
+#from importlib.metadata import PackageNotFoundError
 
+try:
+    from importlib import metadata
+    from importlib.metadata import PackageNotFoundError
+except ImportError: # for Python<3.8
+    import importlib_metadata as metadata
+    from importlib_metadata import PackageNotFoundError
 
 def current_version():
     try:
