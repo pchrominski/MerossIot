@@ -30,7 +30,8 @@ _KNOWN_DEV_TYPES_CLASSES = {
     "mts100v3": Mts100v3Valve,
     "ms100": Ms100Sensor,
     "ms100f": Ms100Sensor,
-    "ms405": Ms405Sensor
+    "ms405": Ms405Sensor,
+    "mts150": Mts100v3Valve
 }
 
 _ABILITY_MATRIX = {
@@ -93,7 +94,8 @@ _SUBDEVICE_MAPPING = {
     "ms100": Ms100Sensor,
     "ms100f": Ms100Sensor,
     "ms405": Ms405Sensor,
-    "ms400": Ms405Sensor
+    "ms400": Ms405Sensor,
+    "mts150": Mts100v3Valve
 }
 
 _dynamic_types = {}
@@ -156,6 +158,7 @@ def _build_cached_type(type_string: str, device_abilities: dict, base_class: typ
     # Messing up with that will cause MRO to not resolve inheritance correctly.
     mixin_classes = list(mixin_classes)
     mixin_classes.append(base_class)
+    _LOGGER.debug("classes: %s", mixin_classes)
     m = type(type_string, tuple(mixin_classes), {"_abilities_spec": device_abilities})
     return m
 
